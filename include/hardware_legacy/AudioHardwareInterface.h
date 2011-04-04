@@ -134,19 +134,7 @@ public:
     uint32_t    frameSize() const {
         // only mono or stereo is supported for input sources
         uint32_t numchannels = AudioSystem::popCount(channels() & (AudioSystem::CHANNEL_IN_STEREO | AudioSystem::CHANNEL_IN_MONO));
-        if (format() == AudioSystem::AMR_NB)
-        {
-          return numchannels * 32;
-        }
-        else if (format() == AudioSystem::EVRC)
-        {
-          return numchannels * 23;
-        }
-        else if (format() == AudioSystem::QCELP)
-        {
-          return numchannels * 35;
-        }
-        else if (format() == AudioSystem::AAC)
+        if (format() == AudioSystem::AAC)
         {
           return  2048;
         }
