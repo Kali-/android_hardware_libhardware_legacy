@@ -2478,6 +2478,10 @@ audio_devices_t AudioPolicyManagerBase::getDeviceForVolume(audio_devices_t devic
         // selection if not the speaker.
         if (device & AUDIO_DEVICE_OUT_SPEAKER) {
             device = AUDIO_DEVICE_OUT_SPEAKER;
+#ifdef QCOM_HARDWARE
+        } else if((device & AUDIO_DEVICE_OUT_WIRED_HEADSET) != 0) {
+            device = AUDIO_DEVICE_OUT_WIRED_HEADSET;
+#endif
         } else {
             device = (audio_devices_t)(device & AUDIO_DEVICE_OUT_ALL_A2DP);
         }
